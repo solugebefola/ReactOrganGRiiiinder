@@ -13,6 +13,7 @@ var Organ = React.createClass({
               return <Key noteName={el} />;
           })
         }
+        <Recorder />
       </div>
     );
   }
