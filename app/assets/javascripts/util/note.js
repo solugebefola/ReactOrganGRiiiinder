@@ -20,7 +20,7 @@
   };
 
   var createGainNode = function () {
-    var gainNo1e = ctx.createGain();
+    var gainNode = ctx.createGain();
     gainNode.gain.value = 0;
     gainNode.connect(ctx.destination);
     return gainNode;

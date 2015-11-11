@@ -1,12 +1,20 @@
 window.KeyActions = {
 
-  keyPressed: function(key){
+  keyPressed: function(note){
     AppDispatcher.dispatch({
       eventType: KeyConstants.PRESSKEY,
-      key: key
+      noteName: note
     });
-
   },
+
+  keyReleased: function(note){
+    AppDispatcher.dispatch({
+      eventType: KeyConstants.RELEASEKEY,
+      noteName: note
+    });
+  }
+
+
 
 
 };

@@ -18,6 +18,7 @@
 
   KeyStore.addKey = function (key) {
     _keys.push(key);
+    KeyStore.changed();
   };
 
   KeyStore.removeKey = function (key) {
@@ -26,7 +27,27 @@
     }else{
       _keys.splice(keyIdx, 1);
     }
+    KeyStore.changed();
+
   };
 
-  
+  KeyStore.keyIn = function (key) {
+    if (_keys.indexOf(key) !== -1){
+      return true;
+    }else{
+      return false;
+    }
+  };
+
+  KeyStore.registerId = AppDispatcher.register(function(payload){
+    switch (payload.eventType){
+      case KeyConstants.PRESSKEY:
+        KeyStore.addKey(payload.noteName);
+        break;
+      case KeyConstants.RELEASEKEY:
+        KeyStore.removeKey(payload.noteName);
+        break;
+      }
+  });
+
 })();
