@@ -1,0 +1,42 @@
+html, body, header, div, ul, li, h1 {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  text-align: inherit;
+  font: inherit;
+  text-decoration: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.key {
+  height: 100px;
+  width: 50px;
+  background-color: #eee;
+  border: 3px;
+  border-style: outset;
+  float: left;
+}
+
+.true.key {
+  background: #000;
+  color: #fff;
+}
+
+
+h1 {
+  font-size: 30px;
+}
+
+.organ {
+  margin: auto;
+  text-align: center;
+  width: 700px;
+}

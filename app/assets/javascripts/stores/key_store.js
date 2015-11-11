@@ -28,7 +28,6 @@
       _keys.splice(keyIdx, 1);
     }
     KeyStore.changed();
-
   };
 
   KeyStore.keyIn = function (key) {
@@ -37,6 +36,10 @@
     }else{
       return false;
     }
+  };
+
+  KeyStore.currentKeys = function () {
+    return _keys.slice();
   };
 
   KeyStore.registerId = AppDispatcher.register(function(payload){

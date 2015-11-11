@@ -6,7 +6,8 @@ var Organ = React.createClass({
       noteList.push(prop);
     }
     return (
-      <div>
+      <div className="organ group">
+        <h1> Organ </h1>
         {
           noteList.map(function (el) {
               return <Key noteName={el} />;
