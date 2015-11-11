@@ -39,7 +39,7 @@
   };
 
   KeyStore.currentKeys = function () {
-    return _keys.slice();
+    return _keys;
   };
 
   KeyStore.registerId = AppDispatcher.register(function(payload){
