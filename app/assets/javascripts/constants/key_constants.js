@@ -1,6 +1,7 @@
 window.KeyConstants = {
   PRESSKEY: "PRESSKEY",
   RELEASEKEY: "RELEASEKEY",
+  CHANGE_ALL_KEYS: "CHANGE_ALL_KEYS",
   65: "C5",
   87: "C#5",
   83: "D5",

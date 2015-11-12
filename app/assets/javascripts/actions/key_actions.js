@@ -12,9 +12,13 @@ window.KeyActions = {
       eventType: KeyConstants.RELEASEKEY,
       noteName: note
     });
+  },
+
+  changeAllKeys: function(newKeys){
+    AppDispatcher.dispatch({
+      eventType: KeyConstants.CHANGE_ALL_KEYS,
+      newKeys: newKeys
+    });
   }
-
-
-
 
 };

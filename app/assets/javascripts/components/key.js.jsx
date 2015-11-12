@@ -1,7 +1,7 @@
 var Key = React.createClass({
 
   getInitialState: function () {
-    return {pressed: false};
+    return {pressed: "unpressed"};
   },
 
   componentDidMount: function () {
@@ -17,10 +17,10 @@ var Key = React.createClass({
   keyListener: function () {
     if (KeyStore.keyIn(this.props.noteName)){
       this.note.start();
-      this.setState({pressed: true});
+      this.setState({pressed: "pressed"});
     }else{
       this.note.stop();
-      this.setState({pressed: false});
+      this.setState({pressed: "unpressed"});
     }
   },
 

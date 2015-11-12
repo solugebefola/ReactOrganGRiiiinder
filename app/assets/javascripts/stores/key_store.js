@@ -23,7 +23,7 @@
 
   KeyStore.removeKey = function (key) {
     var keyIdx = _keys.indexOf(key);
-    if (keyIdx === -1){
+    if (keyIdx == -1){
     }else{
       _keys.splice(keyIdx, 1);
     }
@@ -39,7 +39,12 @@
   };
 
   KeyStore.currentKeys = function () {
-    return _keys;
+    return _keys.slice();
+  };
+
+  KeyStore.changeAllKeys = function (newKeys) {
+    _keys = newKeys;
+    KeyStore.changed();
   };
 
   KeyStore.registerId = AppDispatcher.register(function(payload){
@@ -49,6 +54,9 @@
         break;
       case KeyConstants.RELEASEKEY:
         KeyStore.removeKey(payload.noteName);
+        break;
+      case KeyConstants.CHANGE_ALL_KEYS:
+        KeyStore.changeAllKeys(payload.newKeys);
         break;
       }
   });

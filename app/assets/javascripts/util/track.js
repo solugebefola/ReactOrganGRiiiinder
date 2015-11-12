@@ -13,8 +13,10 @@
 
     this.addNotes = function (notes) {
       var timeSlice = Date.now() - this.currentTime;
-      var newNotes = notes || KeyStore.currentKeys();
-
+      var newNotes = notes || KeyStore.currentKeys().filter(function (el){
+        return (typeof el !=="undefined");
+      });
+      debugger
       this.chord = {timeslice: timeSlice, notes: newNotes};
       this.roll.push(this.chord);
     }.bind(this);
@@ -25,21 +27,28 @@
     };
 
     this.play = function(){
+      var playbackStartTime = Date.now();
+      var currentNote = 0;
+      var deltaT = 0;
+      var nextNote;
+
       if (this.interval){
         return;
       } else {
-        var playbackStartTime = Date.now();
-        var currentNote = 0;
         this.interval = setInterval(function(){
-          var currentTrackTime = Date.now();
-          var deltaT = currentTrackTime - playbackStartTime ;
-          var laterNotes = this.roll.filter(function(el){
-            debugger
-            return (el.timeSlice > deltaT);
-          });
-          var notesToPlay = laterNotes[0].notes;
-          KeyStore.currentKeys = notesToPlay;
-          KeyStore.changed();
+          while ( currentNote < this.roll.length ){
+            deltaT = Date.now() - playbackStartTime;
+            nextNote = this.roll[currentNote];
+
+            if (nextNote.timeSlice < deltaT) {
+              debugger
+              KeyActions.changeAllKeys(nextNote.notes);
+              currentNote += 1;
+            }
+          }
+          clearInterval(this.interval);
+          delete this.interval;
+
         }.bind(this), 100);
       }
     };

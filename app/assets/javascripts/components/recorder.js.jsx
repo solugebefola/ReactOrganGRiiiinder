@@ -5,15 +5,17 @@ var Recorder = React.createClass({
     return { isRecording: false, track: track, input: "" };
   },
 
-  recordHandler: function(){
+  recordHandler: function(e){
+    e.preventDefault();
     this.state.track.name = this.state.input;
-    this.setState({isRecording: true});
+    this.setState({ isRecording: true });
     this.state.track.startRecording();
   },
 
-  stopHandler: function () {
+  stopHandler: function (e) {
+    e.preventDefault();
     this.state.track.stopRecording();
-    this.setState({isRecording: false, input: ""});
+    this.setState({ isRecording: false, input: "" });
   },
 
   trackNameHandler: function (e) {
